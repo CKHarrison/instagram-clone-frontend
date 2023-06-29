@@ -1,0 +1,45 @@
+:root {
+  --font-weight-bold: 700;
+  --font-weight-regular: 300;
+  --color--black: #000;
+  --color--white: #fff;
+  --background-white: #fff;
+  --background-grey: #ededed;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Source Sans 3", sans-serif;
+  display: flex;
+  flex-direction: column;
+  /* background-color: var(--background-grey); */
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  border: 1px solid black;
+  background: var(--background-white);
+  padding: 0.5em;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  width: 40%;
+}
+
+.avatar {
+  width: 12%;
+  border-radius: 100%;
+}
