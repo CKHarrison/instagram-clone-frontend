@@ -75,6 +75,7 @@ header {
   align-items: flex-start;
   justify-content: space-between;
   gap: 1em;
+  margin-top: 0.5em;
 }
 
 .post--info {
@@ -122,6 +123,7 @@ header {
 
 .comment {
   margin: 0;
+  margin-bottom: 0.5em;
 }
 
 /* Typography */
@@ -146,7 +148,7 @@ h1 {
 
 .post-separator {
   background-color: var(--background-grey);
-  padding: 1em;
+  padding: 0.1em;
 }
 
 /* utils */

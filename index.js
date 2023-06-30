@@ -35,9 +35,6 @@ const postSeparatorText = `<div class="post-separator container"></div>`;
 for (let i = 0; i < posts.length; i++) {
   let { name, username, location, avatar, post, comment, likes } = posts[i];
   mainEl.innerHTML += buildPost(name, username, location, avatar, post, comment, likes, i);
-  // newPost = document.createElement("div");
-  // newPost.innerHTML = buildPost(name, username, location, avatar, post, comment, likes, i);
-  // mainEl.append(newPost);
 
   if (i < posts.length - 1) {
     mainEl.innerHTML += postSeparatorText;
