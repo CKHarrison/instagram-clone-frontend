@@ -30,25 +30,40 @@ const posts = [
 
 const mainEl = document.getElementById("main");
 
-const postSeparatorText = `<div class="post-separator"></div>`;
+const postSeparatorText = `<div class="post-separator container"></div>`;
 
 for (let i = 0; i < posts.length; i++) {
   let { name, username, location, avatar, post, comment, likes } = posts[i];
-  mainEl.innerHTML += buildPost(name, username, location, avatar, post, comment, likes);
-
-  const likeBtn = document.getElementById("like-btn");
-  likeBtn.addEventListener("dblclick", function () {
-    console.log("button clicked");
-    // likes++;
-    // alert(likes);
-  });
+  mainEl.innerHTML += buildPost(name, username, location, avatar, post, comment, likes, i);
+  // newPost = document.createElement("div");
+  // newPost.innerHTML = buildPost(name, username, location, avatar, post, comment, likes, i);
+  // mainEl.append(newPost);
 
   if (i < posts.length - 1) {
     mainEl.innerHTML += postSeparatorText;
   }
+  console.log(`like-btn-${i}`);
 }
 
-function buildPost(name, username, location, avatar, post, comment, likes) {
+// add like btn functionality
+const likedStatus = new Array(posts.length).fill(false);
+
+for (let i = 0; i < posts.length; i++) {
+  const btn = document.getElementById(`like-btn-${i}`);
+  btn.addEventListener("click", function () {
+    if (likedStatus[i] === false) {
+      likePost(i);
+      likedStatus[i] = true;
+      toggleRedHeart(btn);
+    } else {
+      unlikePost(i);
+      likedStatus[i] = false;
+      toggleBlankHeart(btn);
+    }
+  });
+}
+
+function buildPost(name, username, location, avatar, post, comment, likes, i) {
   const postText = `
 <div class="container">
         <section class="post">
@@ -66,11 +81,14 @@ function buildPost(name, username, location, avatar, post, comment, likes) {
 
           <div class="col">
             <div class="post--options">
-              <img class="post--icon like-btn" id="like-btn" src="images/icon-heart.png" alt="heart icon" />
+              <img class="post--icon like-btn" id="like-btn-${i}" src="images/icon-heart.png" alt="heart icon" />
               <img class="post--icon" src="images/icon-comment.png" alt="heart icon" />
               <img class="post--icon" src="images/icon-dm.png" alt="heart icon" />
             </div>
-            <p class="post--likes" >${likes} likes</p>
+            <div class="row start bold">
+              <p id="likes-${i}">${likes} </p>
+              <p class="likes--text">likes</p>
+            </div>
           </div>
 
           <div class="comments col">
@@ -82,4 +100,30 @@ function buildPost(name, username, location, avatar, post, comment, likes) {
       </div>
 `;
   return postText;
+}
+
+function likePost(index) {
+  const likesEl = document.getElementById(`likes-${index}`);
+  let likesNum = Number(likesEl.textContent);
+  likesNum++;
+  likesEl.textContent = likesNum;
+}
+
+function unlikePost(index) {
+  const likesEl = document.getElementById(`likes-${index}`);
+  let likesNum = Number(likesEl.textContent);
+  likesNum--;
+  likesEl.textContent = likesNum;
+}
+
+function toggleRedHeart(img) {
+  img.src = "images/red-heart.png";
+  img.classList.remove("post--icon");
+  img.classList.add("red-heart");
+}
+
+function toggleBlankHeart(img) {
+  img.src = "images/icon-heart.png";
+  img.classList.remove("red-heart");
+  img.classList.add("post--icon");
 }

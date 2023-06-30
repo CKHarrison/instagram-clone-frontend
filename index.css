@@ -103,9 +103,8 @@ header {
   margin-top: 1em;
 }
 
-.post--likes {
-  font-weight: var(--font-weight-bold);
-  margin-bottom: 0.5em;
+.likes--text {
+  margin-left: 0.2em;
 }
 
 .post--icon {
@@ -143,4 +142,20 @@ h1 {
 .post-separator {
   background-color: var(--background-grey);
   padding: 1em;
+}
+
+/* utils */
+.start {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.bold {
+  font-weight: var(--font-weight-bold);
+}
+
+.red-heart {
+  width: 8%;
 }
