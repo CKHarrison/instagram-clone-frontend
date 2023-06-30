@@ -111,6 +111,11 @@ header {
   width: 8%;
 }
 
+.post--icon:hover,
+.post--icon:focus {
+  cursor: pointer;
+}
+
 .like-btn {
   cursor: pointer;
 }
@@ -158,4 +163,9 @@ h1 {
 
 .red-heart {
   width: 8%;
+}
+
+.red-heart:hover,
+.red-heart:focus {
+  cursor: pointer;
 }
